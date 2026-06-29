@@ -132,6 +132,21 @@
             justify-content: space-between;
         }
 
+        .info-note {
+            background-color: #fcf8f2;
+            border-left: 4px solid var(--accent-bebe);
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .info-note-beaute {
+            border-left-color: var(--accent-beaute);
+            background-color: #fdf9f9;
+        }
+
         /* Steps Checkbox */
         .step-item {
             display: flex;
@@ -203,9 +218,48 @@
         </div>
 
         <div id="beaute" class="recipe-section">
-            <h2>Soin Express Éclat du Visage</h2>
-            <p>Rayonner sans dépenser des millions avec les ingrédients du placard.</p>
-            <p>💡 <em>Recette à venir ! (Espace prêt à recevoir votre prochain DIY)</em></p>
+            <h2>Masque Cheveux Nutritif</h2>
+            <p>Nourrir intensément vos longueurs grâce aux trésors de vos placards.</p>
+            
+            <div class="info-note info-note-beaute">
+                💡 <strong>Note :</strong> Les quantités indiquées sont adaptées pour des cheveux mi-longs avec un volume moyen.
+            </div>
+
+            <h3>Ingrédients :</h3>
+            <ul>
+                <li><span>Banane mûre :</span> <strong>1</strong></li>
+                <li><span>Huile d'olive :</span> <strong>5 c. à soupe</strong></li>
+                <li><span>Huile de macadamia <em>(facultatif)</em> :</span> <strong>1 c. à soupe</strong></li>
+                <li><span>Glycérine végétale <em>(facultatif)</em> :</span> <strong>3 à 5 gouttes</strong></li>
+            </ul>
+
+            <h3>Pas-à-pas interactif :</h3>
+            <div class="step-list">
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Écrasez grossièrement la banane à la fourchette puis ajoutez les huiles.</span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Bien mélanger pour essayer d'obtenir un mélange bien lisse (vous pouvez aussi passer le mélange au mixeur). <em>Astuce : Plus le mélange est lisse, plus il sera facile à rincer !</em></span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Ajoutez la glycérine végétale et mélangez à nouveau.</span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Sur cheveux bien démêlés, appliquez sur vos longueurs mèche par mèche. <strong>Ne pas appliquer sur les racines.</strong></span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Laissez poser au minimum 2 heures.</span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Rincez vos cheveux à l'eau tiède et procédez à votre shampooing habituel.</span>
+                </label>
+            </div>
         </div>
 
         <div id="bebe" class="recipe-section">
@@ -235,11 +289,11 @@
         const inputQuantite = document.getElementById('quantite-lessive');
         
         // Proportions de base pour 1 Litre
-        const baseSavon = 5;
-        const baseBicar = 4;
-        const baseCristaux = 2;
-        const baseEauChaude = 1;
-        const baseEauAmb = 1;
+        const baseSavon = 3;
+        const baseBicar = 2;
+        const baseCristaux = 1;
+        const baseEauChaude = 0,5;
+        const baseEauAmb = 0,5;
 
         inputQuantite.addEventListener('input', () => {
             let qte = parseFloat(inputQuantite.value);
@@ -258,10 +312,68 @@
             if (checkbox.checked) {
                 text.classList.add('done');
             } else {
-                text.classList.add('done');
                 text.classList.remove('done');
             }
         }
     </script>
 </body>
 </html>
+
+<div class="recipe-card" id="recipe-liniment">
+    <h3>🍼 Liniment protecteur (Flacon de 500 ml)</h3>
+    <p class="recipe-intro">Une recette ultra-simple, douce et protectrice pour le change de votre bébé, sans produits nocifs.</p>
+    
+    <div class="ingredients-box">
+        <h4>🌿 Ingrédients :</h4>
+        <ul>
+            <li>💧 <strong>250 ml</strong> d'eau de chaux</li>
+            <li>🫒 <strong>250 ml</strong> d'huile d'olive (bio de préférence)</li>
+            <li>🐝 <strong>3 cuillères à café</strong> de cire d'abeille (pour stabiliser le mélange)</li>
+        </ul>
+    </div>
+
+    <div class="steps-box">
+        <h4>🥣 Préparation pas-à-pas :</h4>
+        <ul class="steps-list">
+            <li>
+                <label class="step-container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="step-text">Dans un récipient adapté, versez l'eau de chaux, l'huile d'olive et la cire d'abeille.</span>
+                </label>
+            </li>
+            <li>
+                <label class="step-container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="step-text">Mettez le récipient au bain-marie et faites chauffer doucement jusqu'à ce que la cire d'abeille soit totalement fondue.</span>
+                </label>
+            </li>
+            <li>
+                <label class="step-container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="step-text">Une fois la cire fondue, retirez du feu et fouettez énergiquement à l'aide d'un petit fouet pendant 5 minutes pour bien émulsionner.</span>
+                </label>
+            </li>
+            <li>
+                <label class="step-container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="step-text"><strong>Optionnel (pour aller plus vite) :</strong> Placez un bol d'eau froide en dessous de votre récipient et continuez de mélanger jusqu'au refroidissement complet. <br><small><em>(Sinon, laissez refroidir à température ambiante en remuant de temps en temps jusqu'à épaississement).</em></small></span>
+                </label>
+            </li>
+            <li>
+                <label class="step-container">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="step-text">Transvasez délicatement la préparation finale dans votre flacon propre de 500 ml. C'est prêt ! ✨</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="recipe-tip">
+        💡 <strong>Le conseil de Routine au naturel :</strong> Pensez à bien agiter le flacon avant chaque utilisation pour homogénéiser le liniment s'il s'est légèrement déphasé avec le temps !
+    </div>
+</div>
