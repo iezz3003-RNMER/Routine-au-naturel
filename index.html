@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine au naturel - Mon Calculateur DIY</title>
+    <style>
+        :root {
+            --bg-color: #fbf9f6;
+            --text-color: #4a4a4a;
+            --accent-maison: #8fa89b; /* Tons doux/naturels */
+            --accent-beaute: #e5b3b3;
+            --accent-bebe: #d7c49e;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        header p {
+            font-style: italic;
+            color: #7a7a7a;
+            margin-top: 0;
+        }
+
+        /* Univers filter tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 8px;
+            border: none;
+            border-radius: 12px;
+            background-color: #eeeae4;
+            color: var(--text-color);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn.active[data-target="maison"] { background-color: var(--accent-maison); color: white; }
+        .tab-btn.active[data-target="beaute"] { background-color: var(--accent-beaute); color: white; }
+        .tab-btn.active[data-target="bebe"] { background-color: var(--accent-bebe); color: white; }
+
+        /* Content Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 450px;
+            box-sizing: border-box;
+        }
+
+        .recipe-section {
+            display: none;
+        }
+
+        .recipe-section.active {
+            display: block;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        /* Calculator Input */
+        .calculator-box {
+            background-color: #fdfcfb;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .calculator-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .calculator-box input {
+            width: 80px;
+            padding: 8px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            outline: none;
+        }
+
+        /* Ingredients List */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Steps Checkbox */
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 12px 0;
+            cursor: pointer;
+        }
+
+        .step-item input {
+            margin-top: 4px;
+            transform: scale(1.2);
+        }
+
+        .step-text.done {
+            text-decoration: line-through;
+            color: #b0b0b0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Routine au naturel ✨</h1>
+        <p>Vos recettes DIY simples et rapides</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-target="maison">🧼 Maison</button>
+        <button class="tab-btn" data-target="beaute">🌸 Beauté</button>
+        <button class="tab-btn" data-target="bebe">👶 Bébé</button>
+    </div>
+
+    <div class="card">
+        
+        <div id="maison" class="recipe-section active">
+            <h2>Lessive Maison Écoresponsable</h2>
+            <p>Une recette saine pour prendre soin de votre linge sans charge mentale.</p>
+            
+            <div class="calculator-box">
+                <label for="quantite-lessive">Quantité désirée (en Litres) :</label>
+                <input type="number" id="quantite-lessive" value="1" min="0.5" step="0.5">
+            </div>
+
+            <h3>Ingrédients :</h3>
+            <ul>
+                <li><span>Savon noir mou :</span> <strong id="ing-savon">5 c. à soupe</strong></li>
+                <li><span>Bicarbonate de soude :</span> <strong id="ing-bicar">4 c. à soupe</strong></li>
+                <li><span>Cristaux de soude :</span> <strong id="ing-cristaux">2 c. à soupe</strong></li>
+                <li><span>Eau chaude :</span> <strong id="ing-eau-chaude">1 Litre(s)</strong></li>
+                <li><span>Eau à temp. ambiante :</span> <strong id="ing-eau-amb">1 Litre(s)</strong></li>
+            </ul>
+
+            <h3>Pas-à-pas interactif :</h3>
+            <div class="step-list">
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Faire fondre le savon noir dans l'eau chaude.</span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Une fois le mélange homogène, ajoutez le bicarbonate et les cristaux, puis mélangez.</span>
+                </label>
+                <label class="step-item">
+                    <input type="checkbox" onchange="toggleStep(this)">
+                    <span class="step-text">Ajoutez l'eau à température ambiante, laissez refroidir... Votre lessive est prête !</span>
+                </label>
+            </div>
+        </div>
+
+        <div id="beaute" class="recipe-section">
+            <h2>Soin Express Éclat du Visage</h2>
+            <p>Rayonner sans dépenser des millions avec les ingrédients du placard.</p>
+            <p>💡 <em>Recette à venir ! (Espace prêt à recevoir votre prochain DIY)</em></p>
+        </div>
+
+        <div id="bebe" class="recipe-section">
+            <h2>Liniment Douceur Protecteur</h2>
+            <p>Prendre soin de la peau délicate de vos tout-petits tout en douceur.</p>
+            <p>💡 <em>Recette à venir ! (Espace prêt à recevoir votre prochain DIY)</em></p>
+        </div>
+
+    </div>
+
+    <script>
+        // Gestion des Onglets / Univers
+        const tabs = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.recipe-section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+
+        // Calculateur dynamique de la lessive
+        const inputQuantite = document.getElementById('quantite-lessive');
+        
+        // Proportions de base pour 1 Litre
+        const baseSavon = 5;
+        const baseBicar = 4;
+        const baseCristaux = 2;
+        const baseEauChaude = 1;
+        const baseEauAmb = 1;
+
+        inputQuantite.addEventListener('input', () => {
+            let qte = parseFloat(inputQuantite.value);
+            if (isNaN(qte) || qte <= 0) qte = 1;
+
+            document.getElementById('ing-savon').innerText = (baseSavon * qte) + " c. à soupe";
+            document.getElementById('ing-bicar').innerText = (baseBicar * qte) + " c. à soupe";
+            document.getElementById('ing-cristaux').innerText = (baseCristaux * qte) + " c. à soupe";
+            document.getElementById('ing-eau-chaude').innerText = (baseEauChaude * qte) + " Litre(s)";
+            document.getElementById('ing-eau-amb').innerText = (baseEauAmb * qte) + " Litre(s)";
+        });
+
+        // Style pas à pas (barrer le texte si coché)
+        function toggleStep(checkbox) {
+            const text = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                text.classList.add('done');
+            } else {
+                text.classList.add('done');
+                text.classList.remove('done');
+            }
+        }
+    </script>
+</body>
+</html>
