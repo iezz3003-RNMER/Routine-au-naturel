@@ -91,6 +91,17 @@
             padding-bottom: 10px;
         }
 
+        h3 {
+            margin-top: 25px;
+            font-weight: 500;
+        }
+
+        .recipe-divider {
+            margin: 40px 0 20px 0;
+            border: 0;
+            border-top: 1px dashed var(--accent-maison);
+        }
+
         .calculator {
             background: #f7f9f8;
             padding: 15px;
@@ -153,13 +164,15 @@
     </header>
 
     <div class="nav-buttons">
-        <button class="nav-btn" id="btn-maison" onclick="showSection('maison')">Maison</button>
+        <button class="nav-btn" id="btn-maison" onclick="showSection('maison')">Ménage</button>
         <button class="nav-btn" id="btn-beaute" onclick="showSection('beaute')">Beauté</button>
         <button class="nav-btn" id="btn-bebe" onclick="showSection('bebe')">Bébé</button>
     </div>
 
     <div id="maison-section" class="section active">
-        <h2>🧼 Lessive Maison</h2>
+        <h2>✨ Ménage au naturel</h2>
+        
+        <h3>🧺 Lessive Maison</h3>
         <div class="calculator">
             <label for="lessive-qty">Quantité souhaitée :</label>
             <select id="lessive-qty" onchange="updateLessive()">
@@ -168,7 +181,7 @@
             </select>
         </div>
         <div class="ingredients-box">
-            <h3>Ingrédients :</h3>
+            <h4>Ingrédients :</h4>
             <ul>
                 <li><span id="ing-savon">5</span> c. à soupe de savon noir mou</li>
                 <li><span id="ing-bicar">4</span> c. à soupe de bicarbonate de soude</li>
@@ -177,19 +190,41 @@
                 <li><span id="ing-eau-amb">1</span> L d'eau à température ambiante</li>
             </ul>
         </div>
-        <h3>Préparation pas-à-pas :</h3>
+        <h4>Préparation pas-à-pas :</h4>
         <ul class="step-list">
             <li class="step-item"><input type="checkbox"> <span>Faire fondre le savon noir dans l'eau chaude.</span></li>
             <li class="step-item"><input type="checkbox"> <span>Une fois le mélange homogène, ajoutez le bicarbonate et les cristaux de soude, puis mélangez.</span></li>
             <li class="step-item"><input type="checkbox"> <span>Ajoutez l'eau à température ambiante et mélangez à nouveau.</span></li>
             <li class="step-item"><input type="checkbox"> <span>Laissez refroidir, votre lessive est prête à être versée dans votre bidon !</span></li>
         </ul>
+
+        <hr class="recipe-divider">
+
+        <h3>🍽️ Poudre Lave-Vaisselle</h3>
+        <div class="ingredients-box">
+            <h4>Matériel & Ingrédients :</h4>
+            <ul>
+                <li>1 bocal hermétique en verre (de préférence)</li>
+                <li>4 c. à soupe de cristaux de soude</li>
+                <li>4 c. à soupe d'acide citrique</li>
+                <li>3 c. à soupe de percarbonate de soude</li>
+            </ul>
+        </div>
+        <h4>Réalisation :</h4>
+        <ul class="step-list">
+            <li class="step-item"><input type="checkbox"> <span>Versez directement dans le bocal en verre toutes les poudres (cristaux de soude, acide citrique et percarbonate).</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Fermez le bocal et secouez énergiquement pour bien mélanger l'ensemble. C'est déjà prêt !</span></li>
+        </ul>
+        <div class="tip">
+            <strong>Utilisation :</strong> Utilisez l'équivalent de 2 à 3 cuillères à soupe de poudre par lavage directement dans le bac de votre lave-vaisselle.
+        </div>
     </div>
 
     <div id="beaute-section" class="section">
-        <h2>🌸 Masque Cheveux Nutritif</h2>
+        <h2>🌸 Beauté au naturel</h2>
+        <h3>🎭 Masque Cheveux Nutritif</h3>
         <div class="ingredients-box">
-            <h3>Ingrédients :</h3>
+            <h4>Ingrédients :</h4>
             <ul>
                 <li>1 banane mûre</li>
                 <li>5 c. à soupe d'huile d'olive</li>
@@ -197,7 +232,7 @@
                 <li><i>Facultatif :</i> 3 à 5 gouttes de glycérine végétale</li>
             </ul>
         </div>
-        <h3>Préparation pas-à-pas :</h3>
+        <h4>Préparation pas-à-pas :</h4>
         <ul class="step-list">
             <li class="step-item"><input type="checkbox"> <span>Écrasez grossièrement la banane à la fourchette puis ajoutez les huiles.</span></li>
             <li class="step-item"><input type="checkbox"> <span>Bien mélanger pour obtenir un mélange bien lisse (vous pouvez utiliser un mixeur).</span></li>
@@ -211,17 +246,18 @@
     </div>
 
     <div id="bebe-section" class="section">
-        <h2>👶 Liniment Douceur</h2>
+        <h2>👶 Bébé au naturel</h2>
+        <h3>🍼 Liniment Douceur</h3>
         <p><i>Pour un flacon vide de 500 ml</i></p>
         <div class="ingredients-box">
-            <h3>Ingrédients :</h3>
+            <h4>Ingrédients :</h4>
             <ul>
                 <li>250 ml d'eau de chaux</li>
                 <li>250 ml d'huile d'olive</li>
                 <li>3 cuillères à café de cire d'abeille</li>
             </ul>
         </div>
-        <h3>Préparation pas-à-pas :</h3>
+        <h4>Préparation pas-à-pas :</h4>
         <ul class="step-list">
             <li class="step-item"><input type="checkbox"> <span>Dans un récipient, versez tous les ingrédients (eau de chaux, huile d'olive et cire d'abeille).</span></li>
             <li class="step-item"><input type="checkbox"> <span>Mettez le récipient au bain-marie et faites fondre complètement la cire d'abeille.</span></li>
