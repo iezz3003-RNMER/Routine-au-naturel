@@ -289,11 +289,11 @@
         const inputQuantite = document.getElementById('quantite-lessive');
         
         // Proportions de base pour 1 Litre
-        const baseSavon = 3;
-        const baseBicar = 2;
-        const baseCristaux = 1;
-        const baseEauChaude = 0,5;
-        const baseEauAmb = 0,5;
+        const baseSavon = 5;
+        const baseBicar = 4;
+        const baseCristaux = 2;
+        const baseEauChaude = 1;
+        const baseEauAmb = 1;
 
         inputQuantite.addEventListener('input', () => {
             let qte = parseFloat(inputQuantite.value);
@@ -318,62 +318,3 @@
     </script>
 </body>
 </html>
-
-<div class="recipe-card" id="recipe-liniment">
-    <h3>🍼 Liniment protecteur (Flacon de 500 ml)</h3>
-    <p class="recipe-intro">Une recette ultra-simple, douce et protectrice pour le change de votre bébé, sans produits nocifs.</p>
-    
-    <div class="ingredients-box">
-        <h4>🌿 Ingrédients :</h4>
-        <ul>
-            <li>💧 <strong>250 ml</strong> d'eau de chaux</li>
-            <li>🫒 <strong>250 ml</strong> d'huile d'olive (bio de préférence)</li>
-            <li>🐝 <strong>3 cuillères à café</strong> de cire d'abeille (pour stabiliser le mélange)</li>
-        </ul>
-    </div>
-
-    <div class="steps-box">
-        <h4>🥣 Préparation pas-à-pas :</h4>
-        <ul class="steps-list">
-            <li>
-                <label class="step-container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    <span class="step-text">Dans un récipient adapté, versez l'eau de chaux, l'huile d'olive et la cire d'abeille.</span>
-                </label>
-            </li>
-            <li>
-                <label class="step-container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    <span class="step-text">Mettez le récipient au bain-marie et faites chauffer doucement jusqu'à ce que la cire d'abeille soit totalement fondue.</span>
-                </label>
-            </li>
-            <li>
-                <label class="step-container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    <span class="step-text">Une fois la cire fondue, retirez du feu et fouettez énergiquement à l'aide d'un petit fouet pendant 5 minutes pour bien émulsionner.</span>
-                </label>
-            </li>
-            <li>
-                <label class="step-container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    <span class="step-text"><strong>Optionnel (pour aller plus vite) :</strong> Placez un bol d'eau froide en dessous de votre récipient et continuez de mélanger jusqu'au refroidissement complet. <br><small><em>(Sinon, laissez refroidir à température ambiante en remuant de temps en temps jusqu'à épaississement).</em></small></span>
-                </label>
-            </li>
-            <li>
-                <label class="step-container">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                    <span class="step-text">Transvasez délicatement la préparation finale dans votre flacon propre de 500 ml. C'est prêt ! ✨</span>
-                </label>
-            </li>
-        </ul>
-    </div>
-    
-    <div class="recipe-tip">
-        💡 <strong>Le conseil de Routine au naturel :</strong> Pensez à bien agiter le flacon avant chaque utilisation pour homogénéiser le liniment s'il s'est légèrement déphasé avec le temps !
-    </div>
-</div>
