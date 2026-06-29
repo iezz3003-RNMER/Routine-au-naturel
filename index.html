@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Routine au naturel - Mon Calculateur DIY</title>
+    <title>Routine au naturel</title>
     <style>
         :root {
             --bg-color: #fbf9f6;
             --text-color: #4a4a4a;
-            --accent-maison: #8fa89b; /* Tons doux/naturels */
+            --accent-maison: #9cbca8;
             --accent-beaute: #e5b3b3;
             --accent-bebe: #d7c49e;
             --card-bg: #ffffff;
@@ -30,291 +30,225 @@
             margin-bottom: 30px;
         }
 
-        header h1 {
-            font-size: 1.8rem;
+        h1 {
+            font-weight: 300;
+            letter-spacing: 2px;
             margin-bottom: 5px;
-            font-weight: 600;
         }
 
-        header p {
+        .subtitle {
             font-style: italic;
-            color: #7a7a7a;
-            margin-top: 0;
+            opacity: 0.8;
         }
 
-        /* Univers filter tabs */
-        .tabs {
+        .nav-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 30px;
             width: 100%;
             max-width: 500px;
         }
 
-        .tab-btn {
+        .nav-btn {
             flex: 1;
-            padding: 12px 8px;
+            padding: 12px;
             border: none;
-            border-radius: 12px;
-            background-color: #eeeae4;
-            color: var(--text-color);
-            font-weight: bold;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .tab-btn.active[data-target="maison"] { background-color: var(--accent-maison); color: white; }
-        .tab-btn.active[data-target="beaute"] { background-color: var(--accent-beaute); color: white; }
-        .tab-btn.active[data-target="bebe"] { background-color: var(--accent-bebe); color: white; }
+        .nav-btn:active {
+            transform: scale(0.98);
+        }
 
-        /* Content Card */
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        #btn-maison { background-color: var(--accent-maison); }
+        #btn-beaute { background-color: var(--accent-beaute); }
+        #btn-bebe { background-color: var(--accent-bebe); }
+
+        .section {
+            display: none;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
             box-sizing: border-box;
         }
 
-        .recipe-section {
-            display: none;
-        }
-
-        .recipe-section.active {
+        .active {
             display: block;
         }
 
         h2 {
             margin-top: 0;
-            font-size: 1.4rem;
+            font-weight: 400;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
         }
 
-        /* Calculator Input */
-        .calculator-box {
-            background-color: #fdfcfb;
-            border: 1px solid #eee;
-            border-radius: 12px;
+        .calculator {
+            background: #f7f9f8;
             padding: 15px;
-            margin: 20px 0;
-            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 20px;
         }
 
-        .calculator-box label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .calculator-box input {
-            width: 80px;
-            padding: 8px;
-            font-size: 1.1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-            outline: none;
-        }
-
-        /* Ingredients List */
-        ul {
-            list-style-type: none;
+        .step-list {
+            list-style: none;
             padding: 0;
         }
 
-        li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .info-note {
-            background-color: #fcf8f2;
-            border-left: 4px solid var(--accent-bebe);
-            padding: 10px 15px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .info-note-beaute {
-            border-left-color: var(--accent-beaute);
-            background-color: #fdf9f9;
-        }
-
-        /* Steps Checkbox */
         .step-item {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            margin: 12px 0;
+            gap: 12px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .step-item input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
             cursor: pointer;
         }
 
-        .step-item input {
-            margin-top: 4px;
-            transform: scale(1.2);
+        .step-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.5;
         }
 
-        .step-text.done {
-            text-decoration: line-through;
-            color: #b0b0b0;
+        .ingredients-box {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e0e0e0;
+        }
+
+        #maison-section .ingredients-box { border-left-color: var(--accent-maison); }
+        #beaute-section .ingredients-box { border-left-color: var(--accent-beaute); }
+        #bebe-section .ingredients-box { border-left-color: var(--accent-bebe); }
+
+        .tip {
+            font-size: 0.9em;
+            background: #fffdf7;
+            border: 1px dashed #e6c875;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Routine au naturel ✨</h1>
-        <p>Vos recettes DIY simples et rapides</p>
+        <h1>Routine au naturel</h1>
+        <p class="subtitle">Votre quotidien plus sain, pas à pas</p>
     </header>
 
-    <div class="tabs">
-        <button class="tab-btn active" data-target="maison">🧼 Maison</button>
-        <button class="tab-btn" data-target="beaute">🌸 Beauté</button>
-        <button class="tab-btn" data-target="bebe">👶 Bébé</button>
+    <div class="nav-buttons">
+        <button class="nav-btn" id="btn-maison" onclick="showSection('maison')">Maison</button>
+        <button class="nav-btn" id="btn-beaute" onclick="showSection('beaute')">Beauté</button>
+        <button class="nav-btn" id="btn-bebe" onclick="showSection('bebe')">Bébé</button>
     </div>
 
-    <div class="card">
-        
-        <div id="maison" class="recipe-section active">
-            <h2>Lessive Maison Écoresponsable</h2>
-            <p>Une recette saine pour prendre soin de votre linge sans charge mentale.</p>
-            
-            <div class="calculator-box">
-                <label for="quantite-lessive">Quantité désirée (en Litres) :</label>
-                <input type="number" id="quantite-lessive" value="1" min="0.5" step="0.5">
-            </div>
-
+    <div id="maison-section" class="section active">
+        <h2>🧼 Lessive Maison</h2>
+        <div class="calculator">
+            <label for="lessive-qty">Quantité souhaitée :</label>
+            <select id="lessive-qty" onchange="updateLessive()">
+                <option value="1">1 Litre</option>
+                <option value="2" selected>2 Litres</option>
+            </select>
+        </div>
+        <div class="ingredients-box">
             <h3>Ingrédients :</h3>
             <ul>
-                <li><span>Savon noir mou :</span> <strong id="ing-savon">5 c. à soupe</strong></li>
-                <li><span>Bicarbonate de soude :</span> <strong id="ing-bicar">4 c. à soupe</strong></li>
-                <li><span>Cristaux de soude :</span> <strong id="ing-cristaux">2 c. à soupe</strong></li>
-                <li><span>Eau chaude :</span> <strong id="ing-eau-chaude">1 Litre(s)</strong></li>
-                <li><span>Eau à temp. ambiante :</span> <strong id="ing-eau-amb">1 Litre(s)</strong></li>
+                <li><span id="ing-savon">5</span> c. à soupe de savon noir mou</li>
+                <li><span id="ing-bicar">4</span> c. à soupe de bicarbonate de soude</li>
+                <li><span id="ing-cristaux">2</span> c. à soupe de cristaux de soude</li>
+                <li><span id="ing-eau-chaude">1</span> L d'eau chaude</li>
+                <li><span id="ing-eau-amb">1</span> L d'eau à température ambiante</li>
             </ul>
-
-            <h3>Pas-à-pas interactif :</h3>
-            <div class="step-list">
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Faire fondre le savon noir dans l'eau chaude.</span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Une fois le mélange homogène, ajoutez le bicarbonate et les cristaux, puis mélangez.</span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Ajoutez l'eau à température ambiante, laissez refroidir... Votre lessive est prête !</span>
-                </label>
-            </div>
         </div>
+        <h3>Préparation pas-à-pas :</h3>
+        <ul class="step-list">
+            <li class="step-item"><input type="checkbox"> <span>Faire fondre le savon noir dans l'eau chaude.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Une fois le mélange homogène, ajoutez le bicarbonate et les cristaux de soude, puis mélangez.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Ajoutez l'eau à température ambiante et mélangez à nouveau.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Laissez refroidir, votre lessive est prête à être versée dans votre bidon !</span></li>
+        </ul>
+    </div>
 
-        <div id="beaute" class="recipe-section">
-            <h2>Masque Cheveux Nutritif</h2>
-            <p>Nourrir intensément vos longueurs grâce aux trésors de vos placards.</p>
-            
-            <div class="info-note info-note-beaute">
-                💡 <strong>Note :</strong> Les quantités indiquées sont adaptées pour des cheveux mi-longs avec un volume moyen.
-            </div>
-
+    <div id="beaute-section" class="section">
+        <h2>🌸 Masque Cheveux Nutritif</h2>
+        <div class="ingredients-box">
             <h3>Ingrédients :</h3>
             <ul>
-                <li><span>Banane mûre :</span> <strong>1</strong></li>
-                <li><span>Huile d'olive :</span> <strong>5 c. à soupe</strong></li>
-                <li><span>Huile de macadamia <em>(facultatif)</em> :</span> <strong>1 c. à soupe</strong></li>
-                <li><span>Glycérine végétale <em>(facultatif)</em> :</span> <strong>3 à 5 gouttes</strong></li>
+                <li>1 banane mûre</li>
+                <li>5 c. à soupe d'huile d'olive</li>
+                <li><i>Facultatif :</i> 1 c. à soupe d'huile de macadamia</li>
+                <li><i>Facultatif :</i> 3 à 5 gouttes de glycérine végétale</li>
             </ul>
-
-            <h3>Pas-à-pas interactif :</h3>
-            <div class="step-list">
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Écrasez grossièrement la banane à la fourchette puis ajoutez les huiles.</span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Bien mélanger pour essayer d'obtenir un mélange bien lisse (vous pouvez aussi passer le mélange au mixeur). <em>Astuce : Plus le mélange est lisse, plus il sera facile à rincer !</em></span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Ajoutez la glycérine végétale et mélangez à nouveau.</span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Sur cheveux bien démêlés, appliquez sur vos longueurs mèche par mèche. <strong>Ne pas appliquer sur les racines.</strong></span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Laissez poser au minimum 2 heures.</span>
-                </label>
-                <label class="step-item">
-                    <input type="checkbox" onchange="toggleStep(this)">
-                    <span class="step-text">Rincez vos cheveux à l'eau tiède et procédez à votre shampooing habituel.</span>
-                </label>
-            </div>
         </div>
-
-        <div id="bebe" class="recipe-section">
-            <h2>Liniment Douceur Protecteur</h2>
-            <p>Prendre soin de la peau délicate de vos tout-petits tout en douceur.</p>
-            <p>💡 <em>Recette à venir ! (Espace prêt à recevoir votre prochain DIY)</em></p>
+        <h3>Préparation pas-à-pas :</h3>
+        <ul class="step-list">
+            <li class="step-item"><input type="checkbox"> <span>Écrasez grossièrement la banane à la fourchette puis ajoutez les huiles.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Bien mélanger pour obtenir un mélange bien lisse (vous pouvez utiliser un mixeur).</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Ajoutez la glycérine végétale si vous en utilisez, et mélangez à nouveau.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Appliquez sur vos cheveux mèche par mèche (évitez les racines) et laissez poser au minimum 2h.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Rincez à l'eau tiède et procédez à votre shampooing habituel.</span></li>
+        </ul>
+        <div class="tip">
+            <strong>Conseils :</strong> Plus votre mélange sera lisse, plus il sera facile à rincer. Faites la pose sur des cheveux bien démêlés. Quantités idéales pour cheveux mi-longs.
         </div>
+    </div>
 
+    <div id="bebe-section" class="section">
+        <h2>👶 Liniment Douceur</h2>
+        <p><i>Pour un flacon vide de 500 ml</i></p>
+        <div class="ingredients-box">
+            <h3>Ingrédients :</h3>
+            <ul>
+                <li>250 ml d'eau de chaux</li>
+                <li>250 ml d'huile d'olive</li>
+                <li>3 cuillères à café de cire d'abeille</li>
+            </ul>
+        </div>
+        <h3>Préparation pas-à-pas :</h3>
+        <ul class="step-list">
+            <li class="step-item"><input type="checkbox"> <span>Dans un récipient, versez tous les ingrédients (eau de chaux, huile d'olive et cire d'abeille).</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Mettez le récipient au bain-marie et faites fondre complètement la cire d'abeille.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Une fois la cire fondue, retirez du feu et fouettez énergiquement à l'aide d'un fouet pendant 5 minutes.</span></li>
+            <li class="step-item"><input type="checkbox"> <span><b>Option rapide :</b> Placez un bol d'eau froide sous votre récipient et mélangez jusqu'au refroidissement complet.</span></li>
+            <li class="step-item"><input type="checkbox"> <span><b>Option patience :</b> Laissez refroidir à température ambiante en mélangeant de temps en temps jusqu'à épaississement.</span></li>
+            <li class="step-item"><input type="checkbox"> <span>Transvasez délicatement la préparation finale dans votre flacon de 500 ml. C'est prêt !</span></li>
+        </ul>
     </div>
 
     <script>
-        // Gestion des Onglets / Univers
-        const tabs = document.querySelectorAll('.tab-btn');
-        const sections = document.querySelectorAll('.recipe-section');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
-            });
-        });
-
-        // Calculateur dynamique de la lessive
-        const inputQuantite = document.getElementById('quantite-lessive');
-        
-        // Proportions de base pour 1 Litre
-        const baseSavon = 5;
-        const baseBicar = 4;
-        const baseCristaux = 2;
-        const baseEauChaude = 1;
-        const baseEauAmb = 1;
-
-        inputQuantite.addEventListener('input', () => {
-            let qte = parseFloat(inputQuantite.value);
-            if (isNaN(qte) || qte <= 0) qte = 1;
-
-            document.getElementById('ing-savon').innerText = (baseSavon * qte) + " c. à soupe";
-            document.getElementById('ing-bicar').innerText = (baseBicar * qte) + " c. à soupe";
-            document.getElementById('ing-cristaux').innerText = (baseCristaux * qte) + " c. à soupe";
-            document.getElementById('ing-eau-chaude').innerText = (baseEauChaude * qte) + " Litre(s)";
-            document.getElementById('ing-eau-amb').innerText = (baseEauAmb * qte) + " Litre(s)";
-        });
-
-        // Style pas à pas (barrer le texte si coché)
-        function toggleStep(checkbox) {
-            const text = checkbox.nextElementSibling;
-            if (checkbox.checked) {
-                text.classList.add('done');
-            } else {
-                text.classList.remove('done');
-            }
+        function showSection(sectionName) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionName + '-section').classList.add('active');
         }
+
+        function updateLessive() {
+            const qty = document.getElementById('lessive-qty').value;
+            document.getElementById('ing-savon').innerText = 2.5 * qty;
+            document.getElementById('ing-bicar').innerText = 2 * qty;
+            document.getElementById('ing-cristaux').innerText = 1 * qty;
+            document.getElementById('ing-eau-chaude').innerText = 0.5 * qty;
+            document.getElementById('ing-eau-amb').innerText = 0.5 * qty;
+        }
+        
+        // Initialisation des proportions de la lessive pour 2L par défaut
+        updateLessive();
     </script>
 </body>
 </html>
