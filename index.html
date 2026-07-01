@@ -175,7 +175,6 @@
         }
         .sub-nav-btn:hover { background-color: #e2e2e2; }
         
-        /* Couleur active par défaut (Beauté) */
         .sub-nav-btn.active {
             background-color: var(--accent-beaute, #e6b8af);
             color: white;
@@ -183,7 +182,6 @@
             font-weight: bold;
         }
         
-        /* Variante couleur active pour l'onglet Ménage */
         .sub-nav-btn.active.btn-maison-style {
             background-color: var(--accent-maison, #545454);
             color: white;
@@ -211,17 +209,43 @@
         <button class="nav-btn" id="btn-bebe" onclick="showSection('bebe')">Bébé</button>
     </div>
 
+    <!-- SECTION MAISON -->
     <div id="maison-section" class="section active">
         <h2>✨ Ménage au naturel</h2>
         
+        <!-- Navigation des sous-sections Ménage -->
         <div class="sub-nav">
-            <button class="sub-nav-btn active btn-maison-style" onclick="showSubSection('linge', event)">🧺 Linge</button>
+            <button class="sub-nav-btn active btn-maison-style" onclick="showSubSection('base', event)">📦 Produits de base</button>
+            <button class="sub-nav-btn btn-maison-style" onclick="showSubSection('linge', event)">🧺 Linge</button>
             <button class="sub-nav-btn btn-maison-style" onclick="showSubSection('multiusages', event)">✨ Multi-usages</button>
             <button class="sub-nav-btn btn-maison-style" onclick="showSubSection('vaisselle', event)">🍽️ Vaisselle</button>
             <button class="sub-nav-btn btn-maison-style" onclick="showSubSection('toilettes', event)">🚽 WC & Bain</button>
         </div>
 
-        <div id="linge-subsection" class="sub-section active">
+        <!-- SS-SECTION : PRODUITS DE BASE -->
+        <div id="base-subsection" class="sub-section active">
+            <h3>📦 Vos Produits de Base</h3>
+            
+            <div class="ingredients-box">
+                <h4>Ingrédients indispensables :</h4>
+                <ul class="step-list">
+                    <li class="step-item"><input type="checkbox"> <span>Bicarbonate de soude</span></li>
+                    <li class="step-item"><input type="checkbox"> <span>Vinaigre d'alcool</span></li>
+                    <li class="step-item"><input type="checkbox"> <span>Cristaux de soude</span></li>
+                    <li class="step-item"><input type="checkbox"> <span>Savon noir ménager <i>(personnellement je préfère le savon mou à l’huile de lin)</i></span></li>
+                    <li class="step-item"><input type="checkbox"> <span>Acide citrique</span></li>
+                </ul>
+            </div>
+            
+            <p>💡 <i>Pas besoin de plus, surtout si vous débutez.</i></p>
+
+            <div class="tip">
+                ⏳ Un guide complet pour vous aider à mettre en place une routine ménage simple et rapide arrive bientôt.
+            </div>
+        </div>
+
+        <!-- SS-SECTION 1 : LINGE -->
+        <div id="linge-subsection" class="sub-section">
             <h3>🧺 Vos Recettes Linge</h3>
             
             <h4>Lessive Maison</h4>
@@ -273,6 +297,7 @@
             </div>
         </div>
 
+        <!-- SS-SECTION 2 : MULTI-USAGES -->
         <div id="multiusages-subsection" class="sub-section">
             <h3>✨ Vos Recettes Multi-usages</h3>
             
@@ -319,6 +344,7 @@
             </div>
         </div>
 
+        <!-- SS-SECTION 3 : VAISSELLE -->
         <div id="vaisselle-subsection" class="sub-section">
             <h3>🍽️ Vos Recettes Vaisselle</h3>
             
@@ -372,6 +398,7 @@
             </div>
         </div>
 
+        <!-- SS-SECTION 4 : TOILETTES & SALLE DE BAINS -->
         <div id="toilettes-subsection" class="sub-section">
             <h3>🚽 Vos Recettes WC & Salle de bains</h3>
             
@@ -421,6 +448,7 @@
         </div>
     </div>
             
+    <!-- SECTION BEAUTÉ -->
     <div id="beaute-section" class="section">
         <h2>🌸 Beauté au naturel</h2>
         <p class="section-intro">Prendre soin de soi et rayonner avec des ingrédients simples et naturels.</p>
@@ -517,6 +545,7 @@
         </div>
     </div>
 
+    <!-- SECTION BÉBÉ -->
     <div id="bebe-section" class="section">
         <h2>👶 Bébé au naturel</h2>
         <h3>🍼 Liniment Douceur</h3>
