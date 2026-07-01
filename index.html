@@ -154,6 +154,37 @@
             border-radius: 8px;
             margin-top: 15px;
         }
+
+        /* --- NOUVEAUX STYLES INTÉGRÉS --- */
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .sub-nav-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        .sub-nav-btn:hover { background-color: #e2e2e2; }
+        .sub-nav-btn.active {
+            background-color: var(--accent-beaute, #e6b8af);
+            color: white;
+            border-color: var(--accent-beaute, #e6b8af);
+            font-weight: bold;
+        }
+        .sub-section { display: none; }
+        .sub-section.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -169,6 +200,7 @@
         <button class="nav-btn" id="btn-bebe" onclick="showSection('bebe')">Bébé</button>
     </div>
 
+    <!-- SECTION MAISON -->
     <div id="maison-section" class="section active">
         <h2>✨ Ménage au naturel</h2>
         
@@ -219,7 +251,7 @@
         </ul>
         <div class="tip">
             <strong>Utilisation :</strong> Utilisez l'équivalent de 2 à 3 cuillères à soupe de poudre par lavage directement dans le bac de votre lave-vaisselle.<br><br>
-            <strong>Conseil pratique :</strong> Le bocal doit être hermétique pour éviter à l’humidité de pénétrer. Sinon la poudre risque de durcir. Le lieu de stockage est aussi important, je vous déconseille fortement de le déposer dans le placard sous l’évier surtout si votre branchement lave-vaisselle se trouve à ce niveau. Pour ma part je laisse le bocal sur le plan de travail.
+            <strong>Conseil pratique :</strong> Le bocal doit être hermétique pour éviter à l’humidité de pénétrer. Sinon la poudre risque de durcier. Le lieu de stockage est aussi important, je vous déconseille fortement de le déposer dans le placard sous l’évier surtout si votre branchement lave-vaisselle se trouve à ce niveau. Pour ma part je laisse le bocal sur le plan de travail.
         </div>
 
         <hr class="recipe-divider">
@@ -279,7 +311,7 @@
         <div class="ingredients-box">
             <h4>Matériel & Ingrédients :</h4>
             <ul>
-                <li>1 flacon d'1 litre</li>
+                <li>1 flacon d'1 livre</li>
                 <li>500 ml d'eau déminéralisée</li>
                 <li>500 ml de vinaigre d'alcool</li>
                 <li>15 gouttes d'huile essentielle de votre choix (ex: lavande fine)</li>
@@ -362,31 +394,104 @@
         </div>
     </div>
             
+    <!-- SECTION BEAUTÉ -->
     <div id="beaute-section" class="section">
         <h2>🌸 Beauté au naturel</h2>
-        <h3>🎭 Masque Cheveux Nutritif</h3>
-        <div class="ingredients-box">
-            <h4>Ingrédients :</h4>
-            <ul>
-                <li>1 banane mûre</li>
-                <li>5 c. à soupe d'huile d'olive</li>
-                <li><i>Facultatif :</i> 1 c. à soupe d'huile de macadamia</li>
-                <li><i>Facultatif :</i> 3 à 5 gouttes de glycérine végétale</li>
-            </ul>
+        <p class="section-intro">Prendre soin de soi et rayonner avec des ingrédients simples et naturels.</p>
+
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" onclick="showSubSection('cheveux')">💇‍♀️ Cheveux</button>
+            <button class="sub-nav-btn" onclick="showSubSection('visage')">✨ Visage</button>
+            <button class="sub-nav-btn" onclick="showSubSection('corps')">🧴 Corps</button>
         </div>
-        <h4>Préparation pas-à-pas :</h4>
-        <ul class="step-list">
-            <li class="step-item"><input type="checkbox"> <span>Écrasez ou mixez la banane à la fourchette puis ajoutez les huiles.</span></li>
-            <li class="step-item"><input type="checkbox"> <span>Bien mélanger pour obtenir un mélange bien lisse (vous pouvez utiliser un mixeur).</span></li>
-            <li class="step-item"><input type="checkbox"> <span>Ajoutez la glycérine végétale si vous en utilisez, et mélangez à nouveau.</span></li>
-            <li class="step-item"><input type="checkbox"> <span>Appliquez sur vos cheveux mèche par mèche (évitez les racines) et laissez poser au minimum 2h.</span></li>
-            <li class="step-item"><input type="checkbox"> <span>Rincez à l'eau tiède et procédez à votre shampooing habituel.</span></li>
-        </ul>
-        <div class="tip">
-            <strong>Conseils :</strong> Plus votre mélange sera lisse, plus il sera facile à rincer. Faites la pose sur des cheveux bien démêlés. Quantités idéales pour cheveux mi-longs.
+
+        <div id="cheveux-subsection" class="sub-section active">
+            <h3>💇‍♀️ Vos Recettes Cheveux</h3>
+            
+            <div class="recipe-card">
+                <h4>Eau de rinçage</h4>
+                <div class="ingredients-box">
+                    <h5>Ingrédients & Matériel :</h5>
+                    <ul>
+                        <li>1 litre d'eau froide</li>
+                        <li>1 à 2 c.à.s de vinaigre de cidre</li>
+                    </ul>
+                </div>
+                
+                <h5>Préparation & Application :</h5>
+                <div class="step-by-step">
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Mélangez ces deux ingrédients.</span>
+                    </label>
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Sur cheveux propres et mouillés (en sortant de la douche), rincez-vous les cheveux avec ce mélange en dernière eau de rinçage.</span>
+                    </label>
+                </div>
+
+                <div class="tip" style="border-color: #e6b8af; background: #fffbfb; margin-top: 15px;">
+                    <strong>💡 Pourquoi ça marche ?</strong> Cette action permet de resserrer les écailles et de garder l'hydratation. Les cheveux sont plus souples et brillants. 
+                    <br><br>
+                    <strong>ℹ️ Info :</strong> L'odeur du vinaigre de cidre s'estompe rapidement.
+                </div>
+            </div>
+        </div>
+
+        <div id="visage-subsection" class="sub-section">
+            <h3>✨ Vos Recettes Visage</h3>
+            
+            <div class="recipe-card">
+                <h4>Masque purifiant visage minute</h4>
+                <div class="ingredients-box">
+                    <h5>Ingrédients & Matériel :</h5>
+                    <ul>
+                        <li>2 c.à.s bien remplies de fromage blanc</li>
+                        <li>1 c.à.c de charbon végétal</li>
+                        <li>1 pinceau applicateur</li>
+                    </ul>
+                </div>
+                
+                <h5>Préparation & Application :</h5>
+                <div class="step-by-step">
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Versez le fromage blanc et le charbon végétal dans un récipient, puis bien mélanger.</span>
+                    </label>
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Appliquez au pinceau sur une peau propre et sèche après avoir nettoyé votre visage.</span>
+                    </label>
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Laissez poser entre 5 minutes (si peau sensible) et 10 minutes.</span>
+                    </label>
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Rincez abondamment !</span>
+                    </label>
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Appliquez une eau florale et laissez sécher.</span>
+                    </label>
+                    <label class="step-item">
+                        <input type="checkbox">
+                        <span>Terminez par l'application d'une huile sèche type huile d'argan, huile d'avocat…</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="corps-subsection" class="sub-section">
+            <h3>🧴 Vos Recettes Corps</h3>
+            
+            <div class="recipe-card" style="text-align: center; color: #888; border-style: dashed;">
+                <p>Pas encore de recette ajoutée pour le corps. Ajoutez votre première formule bientôt ! 🌸</p>
+            </div>
         </div>
     </div>
 
+    <!-- SECTION BÉBÉ -->
     <div id="bebe-section" class="section">
         <h2>👶 Bébé au naturel</h2>
         <h3>🍼 Liniment Douceur</h3>
